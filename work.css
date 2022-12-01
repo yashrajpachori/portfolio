@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    margin: 0;
+    font-family: Poppins;
+}
+
+.card {
+    display: grid;
+    position: relative;
+
+    width: min(100% - 2rem, 380px);
+    margin: 3rem;
+    overflow: hidden;
+    border-radius: 0.8em;
+    box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.card:is(:hover, :focus) {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:focus-visible {
+    outline: 2px dashed;
+    outline-offset: 0.4em;
+}
+
+.card__img-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    aspect-ratio: 16 / 9;
+}
+
+/* image overlay */
+.card__img-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    z-index: 1;
+    transition: var(--transition);
+}
+
+
+
+
+
+.card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card__body {
+    padding: 1em 1.5em;
+}
+
+.card__title {
+    margin: 0;
+    font-size: clamp(1.4rem, 4vw, 1.7rem);
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #26596E;
+}
+
+.card__date {
+    font-size: 0.875rem;
+    color: #26596E;
+    text-decoration: none;
+}
+
+.card__cta {
+    position: relative;
+    width: fit-content;
+    text-decoration: none;
+    margin-top: auto;
+    color: #26596E;
+}
+
+
+/* right arrow */
+.card__cta::after {
+    content: " →";
+    display: inline-block;
+    margin-left: 5px;
+    transition: var(--transition);
+}
+
+/* image overlay */
+.card:is(:hover, :focus) .card__img-container::before {
+    opacity: 1;
+}
+
+
+
+/* move arrow */
+.card:is(:hover, :focus) .card__cta::after {
+    transform: translateX(6px);
+}
+
+
+
+.myworkwraper {
+    display: flex;
+    flex-wrap: wrap;
+}
